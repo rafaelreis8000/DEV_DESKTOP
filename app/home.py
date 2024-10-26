@@ -1,6 +1,6 @@
 import flet as ft
 
-def login(page:ft.Page):
+def home(page:ft.Page):
 
 #####################################################################################
 #####################################################################################
@@ -10,7 +10,7 @@ def login(page:ft.Page):
         bgcolor="#1D3331",
         content=ft.ResponsiveRow(
             col={"xs":12,"sm":6,"md":4},
-            controls=[ft.TextButton("LOGIN",on_click=lambda _:page.go("/home"))]
+            controls=[ft.Text("HOMEPAGE")]
         )
     )
 

@@ -20,7 +20,7 @@ class TelaHome:
 
         logo=ft.Image("app/assets\logo3.jpg")
         icone_sair=ft.Container(
-            margin=15,
+            margin=20,
             on_click=lambda e:page.open(alerta_logout),
             content=ft.Image("app/assets\Ícone Sair.svg"),
         )
@@ -44,7 +44,7 @@ class TelaHome:
                 [
                     ft.Text("Teste 1"),
                     ft.Text("Teste 2"),
-                    ft.Text("Teste3")
+                    ft.Text("Teste 3")
                 ]
             )
         )

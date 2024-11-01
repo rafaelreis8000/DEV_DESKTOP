@@ -36,6 +36,18 @@ def home(page:ft.Page):
         )
     )
 
+    sidebar=ft.Container(
+        width=150,
+        bgcolor="#2A383E",
+        content=ft.Column(
+            [
+                ft.Text("Teste 1"),
+                ft.Text("Teste 2"),
+                ft.Text("Teste3")
+            ]
+        )
+    )
+
     ###############################################################################
     ###############################################################################
 
@@ -46,6 +58,7 @@ def home(page:ft.Page):
             col={"xs":12,"sm":6,"md":4},
             controls=[
                 appbar,
+                sidebar
             ]
         )
     )

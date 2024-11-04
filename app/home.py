@@ -1,7 +1,6 @@
 import flet as ft
 
 class TelaHome:
-    
 
     def home(page:ft.Page):
 

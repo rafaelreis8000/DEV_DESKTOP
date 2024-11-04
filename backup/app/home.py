@@ -19,6 +19,10 @@ class TelaHome:
             ]
         )
 
+        def hover_btn(e):
+            e.control.bgcolor="#1C1C1C" if e.data=="true"else None
+            e.control.update()
+
         ###############################################################################
         ###############################################################################
 
@@ -41,11 +45,23 @@ class TelaHome:
             )
         )
 
-        btn_usuarios=ft.Container(
+        btn_home=ft.Container(
             padding=10,
+            bgcolor="#1C1C1C",
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Perfil 2.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Home.svg",width=30,height=30),
+                    ft.Text("Usuários")
+                ]
+            )
+        )
+
+        btn_usuarios=ft.Container(
+            padding=10,
+            on_hover=hover_btn,
+            content=ft.Row(
+                [
+                    ft.Image("app/assets\Ícone Perfil 2.svg",width=30,height=30),
                     ft.Text("Usuários")
                 ]
             )
@@ -53,9 +69,10 @@ class TelaHome:
 
         btn_culturas=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Cultura.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Cultura.svg",width=30,height=30),
                     ft.Text("Culturas")
                 ]
             )
@@ -63,9 +80,10 @@ class TelaHome:
 
         btn_plantios=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Plantio.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Plantio.svg",width=30,height=30),
                     ft.Text("Plantios")
                 ]
             )
@@ -73,9 +91,10 @@ class TelaHome:
 
         btn_colheitas=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Colheita.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Colheita.svg",width=30,height=30),
                     ft.Text("Colheitas")
                 ]
             )
@@ -83,9 +102,10 @@ class TelaHome:
 
         btn_insumos=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Insumos.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Insumos.svg",width=30,height=30),
                     ft.Text("Insumos")
                 ]
             )
@@ -93,9 +113,10 @@ class TelaHome:
 
         btn_fornecedores=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app\/assets\Ícone Fornecedores.svg",width=42,height=42),
+                    ft.Image("app\/assets\Ícone Fornecedores.svg",width=30,height=30),
                     ft.Text("Fornecedores")
                 ]
             )
@@ -103,9 +124,10 @@ class TelaHome:
 
         btn_pedidos=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Financeiro.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Financeiro.svg",width=30,height=30),
                     ft.Text("Pedidos")
                 ]
             )
@@ -113,9 +135,10 @@ class TelaHome:
 
         btn_relatorios=ft.Container(
             padding=10,
+            on_hover=hover_btn,
             content=ft.Row(
                 [
-                    ft.Image("app/assets\Ícone Prancheta.svg",width=42,height=42),
+                    ft.Image("app/assets\Ícone Prancheta.svg",width=30,height=30),
                     ft.Text("Relatórios")
                 ]
             )
@@ -127,6 +150,7 @@ class TelaHome:
             border_radius=ft.border_radius.only(top_right=10,bottom_right=10),
             content=ft.Column(
                 [
+                    btn_home,
                     btn_usuarios,
                     btn_culturas,
                     btn_plantios,
@@ -149,9 +173,10 @@ class TelaHome:
                 col={"xs":12,"sm":6,"md":4},
                 controls=[
                     appbar,
-                    ft.Container(
-                        sidebar,
-                        alignment=ft.alignment.center_left #joga a sidebar para a esquerda, sem que estique pro restante da tela
+                    ft.Row(
+                        [
+                            ft.Container(sidebar,alignment=ft.alignment.center_left),
+                        ]
                     ),
                 ]
             )

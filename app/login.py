@@ -82,8 +82,8 @@ def login(page:ft.Page):
         padding=ft.Padding(left=20,right=20,bottom=20,top=0)
     )
 
-    input_email=ft.TextField(label="Insira seu E-mail: ")
-    input_senha=ft.TextField(label="Insira sua senha: ",password=True,can_reveal_password=True)
+    input_email=ft.TextField(label="Insira seu E-mail: ",color=ft.colors.BLACK)
+    input_senha=ft.TextField(label="Insira sua senha: ",color=ft.colors.BLACK,password=True,can_reveal_password=True)
     btn_login=ft.Container(
         alignment=ft.alignment.center_right,
         padding=ft.Padding(left=20,right=20,bottom=20,top=0),

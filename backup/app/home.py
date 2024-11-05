@@ -28,7 +28,7 @@ class TelaHome:
 
         logo=ft.Image("app/assets\logo3.jpg")
         icone_sair=ft.Container(
-            margin=20,
+            padding=20,
             on_click=lambda e:self.page.open(alerta_logout),
             content=ft.Image("app/assets\Ícone Sair.svg"),
         )
@@ -146,6 +146,7 @@ class TelaHome:
 
         sidebar=ft.Container(
             width=160,
+            height=720,
             bgcolor="#2E2E2E",
             border_radius=ft.border_radius.only(top_right=10,bottom_right=10),
             content=ft.Column(
@@ -163,6 +164,14 @@ class TelaHome:
             )
         )
 
+        txt_tela_titulo=ft.Container(
+            content=ft.Text("Bem-vindo ao Sistema de Gerenciamento da Fazenda Urbana",color=ft.colors.BLACK,size=20)
+        )
+
+        txt_tela_subtitulo=ft.Container(
+            content=ft.Text("Aqui você pode visualizar um resumo das operações.\nNavegue pelas opções no menu para gerenciar as culturas, plantios, colheitas e mais",color=ft.colors.BLACK)
+        )
+
         ###############################################################################
         ###############################################################################
 
@@ -172,12 +181,7 @@ class TelaHome:
             content=ft.ResponsiveRow(
                 col={"xs":12,"sm":6,"md":4},
                 controls=[
-                    appbar,
-                    ft.Row(
-                        [
-                            ft.Container(sidebar,alignment=ft.alignment.center_left),
-                        ]
-                    ),
+                    ft.Container(content=appbar,alignment=ft.alignment.top_center),
                 ]
             )
         )

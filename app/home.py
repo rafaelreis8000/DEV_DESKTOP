@@ -28,7 +28,7 @@ class TelaHome:
 
         logo=ft.Image("app/assets\logo3.jpg")
         icone_sair=ft.Container(
-            margin=20,
+            padding=20,
             on_click=lambda e:self.page.open(alerta_logout),
             content=ft.Image("app/assets\Ícone Sair.svg"),
         )
@@ -146,6 +146,7 @@ class TelaHome:
 
         sidebar=ft.Container(
             width=160,
+            height=720,
             bgcolor="#2E2E2E",
             border_radius=ft.border_radius.only(top_right=10,bottom_right=10),
             content=ft.Column(
@@ -174,32 +175,13 @@ class TelaHome:
         ###############################################################################
         ###############################################################################
 
-        info_tela=ft.Container(
-            expand=True,
-            padding=20,
-            content=ft.Column(
-                controls=[
-                    txt_tela_titulo,
-                    txt_tela_subtitulo,
-                ],
-                alignment=ft.MainAxisAlignment.START,
-                horizontal_alignment=ft.CrossAxisAlignment.START
-            )
-        )
-
         tela=ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
             content=ft.ResponsiveRow(
                 col={"xs":12,"sm":6,"md":4},
                 controls=[
-                    appbar,
-                    ft.Row(
-                        [
-                            ft.Container(sidebar,alignment=ft.alignment.center_left),
-                            info_tela
-                        ]
-                    )
+                    ft.Container(content=appbar,alignment=ft.alignment.top_center),
                 ]
             )
         )

@@ -80,19 +80,19 @@ class TelaLogin:
 
         logo=ft.Container(
             alignment=ft.alignment.top_center,
-            content=ft.Image("app/assets\logo2.jpg"),
+            content=ft.Image("app/assets\logo2.png"),
             width=250,
             height=250,
             padding=ft.Padding(left=20,right=20,bottom=20,top=0)
         )
 
-        input_email=ft.TextField(label="Insira seu E-mail: ",color=ft.colors.BLACK)
-        input_senha=ft.TextField(label="Insira sua senha: ",color=ft.colors.BLACK,password=True,can_reveal_password=True)
+        input_email=ft.TextField(label="Insira seu E-mail: ",color=ft.colors.BLACK,label_style=ft.TextStyle(color=ft.colors.BLACK))
+        input_senha=ft.TextField(label="Insira sua senha: ",color=ft.colors.BLACK,label_style=ft.TextStyle(color=ft.colors.BLACK),password=True,can_reveal_password=True)
         btn_login=ft.Container(
             alignment=ft.alignment.center_right,
             padding=ft.Padding(left=20,right=20,bottom=20,top=0),
             #content=ft.TextButton("LOGIN",on_click=autenticar_usuario),
-            content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"))
+            content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
         )
         output_text = ft.Text()
 
@@ -100,7 +100,7 @@ class TelaLogin:
         elemento_login=ft.Container(
             width=500,
             height=500,
-            bgcolor="#FCFEFD",
+            bgcolor="#D9D9D9",
             border_radius=10,
             padding=30,
             content=ft.Column(

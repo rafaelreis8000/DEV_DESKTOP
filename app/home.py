@@ -166,6 +166,8 @@ class TelaHome:
         ###############################################################################
         ###############################################################################
 
+        info_tela=ft.Container()
+
         tela=ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
@@ -176,6 +178,7 @@ class TelaHome:
                     ft.Row(
                         [
                             ft.Container(sidebar,alignment=ft.alignment.center_left),
+                            info_tela
                         ]
                     ),
                 ]

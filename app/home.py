@@ -163,10 +163,29 @@ class TelaHome:
             )
         )
 
+        txt_tela_titulo=ft.Container(
+            content=ft.Text("Bem-vindo ao Sistema de Gerenciamento da Fazenda Urbana",color=ft.colors.BLACK,size=20)
+        )
+
+        txt_tela_subtitulo=ft.Container(
+            content=ft.Text("Aqui você pode visualizar um resumo das operações.\nNavegue pelas opções no menu para gerenciar as culturas, plantios, colheitas e mais",color=ft.colors.BLACK)
+        )
+
         ###############################################################################
         ###############################################################################
 
-        info_tela=ft.Container()
+        info_tela=ft.Container(
+            expand=True,
+            padding=20,
+            content=ft.Column(
+                controls=[
+                    txt_tela_titulo,
+                    txt_tela_subtitulo,
+                ],
+                alignment=ft.MainAxisAlignment.START,
+                horizontal_alignment=ft.CrossAxisAlignment.START
+            )
+        )
 
         tela=ft.Container(
             expand=True,
@@ -180,7 +199,7 @@ class TelaHome:
                             ft.Container(sidebar,alignment=ft.alignment.center_left),
                             info_tela
                         ]
-                    ),
+                    )
                 ]
             )
         )

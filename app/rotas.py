@@ -2,6 +2,7 @@ import flet as ft
 
 from app.login import TelaLogin
 from app.home import TelaHome #chama a classe tela home
+from app.usuarios import TelaUsuarios
 
 def registro_rotas(page:ft.Page):
     def mudar_rotas(route):
@@ -15,6 +16,10 @@ def registro_rotas(page:ft.Page):
         elif page.route=="/home":
             obj_home=TelaHome(page)
             page.views.append(ft.View(route="/home",controls=[obj_home.home()]))
+        
+        elif page.route=="/usuarios":
+            obj_usuarios=TelaUsuarios(page)
+            page.views.append(ft.View(route="/usuarios",controls=[obj_usuarios.usuarios()]))
 
         page.update()
 

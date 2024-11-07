@@ -1,11 +1,11 @@
 import flet as ft
 
-class TelaHome:
+class TelaUsuarios:
 
     def __init__(self,page):
         self.page=page
 
-    def home(self):
+    def usuarios(self):
 
         #Pop-up de alerta. Ao clicar em fazer logoff, uma confirmação é chamada
         alerta_logout=ft.AlertDialog(
@@ -48,19 +48,19 @@ class TelaHome:
 
         btn_home=ft.Container(
             padding=10,
-            bgcolor="#1C1C1C",
+            on_hover=hover_btn,
+            on_click=lambda e:self.page.go("/home"),
             content=ft.Row(
                 [
                     ft.Image("app/assets\Ícone Home.svg",width=30,height=30),
-                    ft.Text("Home")
+                    ft.Text("Usuários")
                 ]
             )
         )
 
         btn_usuarios=ft.Container(
             padding=10,
-            on_hover=hover_btn,
-            on_click=lambda e:self.page.go("/usuarios"),
+            bgcolor="#1C1C1C",
             content=ft.Row(
                 [
                     ft.Image("app/assets\Ícone Perfil 2.svg",width=30,height=30),
@@ -171,9 +171,9 @@ class TelaHome:
             margin=10,
             content=ft.Column(
                 [
-                    ft.Text("Bem-vindo ao Sistema de Gerenciamento da Fazenda Urbana",color=ft.colors.BLACK,size=20),
+                    ft.Text("Gerenciamento de Usuários",color=ft.colors.BLACK,size=20),
                     ft.Text(
-                        "Aqui você pode visualizar um resumo das operações.\nNavegue pelas opções do menu para gerenciar as culturas, plantios, colheitas e mais",
+                        "Aqui você pode visualizar e criar usuários.",
                         color=ft.colors.BLACK
                     )
                 ]

@@ -1,4 +1,5 @@
 import flet as ft
+import requests
 
 class TelaUsuarios:
 
@@ -6,6 +7,8 @@ class TelaUsuarios:
         self.page=page
 
     def usuarios(self):
+
+        API="https://api-pim.onrender.com"
 
         #Pop-up de alerta. Ao clicar em fazer logoff, uma confirmação é chamada
         alerta_logout=ft.AlertDialog(
@@ -22,6 +25,9 @@ class TelaUsuarios:
         def hover_btn(e):
             e.control.bgcolor="#1C1C1C" if e.data=="true"else None
             e.control.update()
+
+        ###############################################################################
+        ###############################################################################
 
         ###############################################################################
         ###############################################################################

@@ -8,7 +8,7 @@ class TelaUsuarios:
 
     def usuarios(self):
 
-        API="https://api-pim.onrender.com"
+        API_URL="https://api-pim.onrender.com"
 
         #Pop-up de alerta. Ao clicar em fazer logoff, uma confirmação é chamada
         alerta_logout=ft.AlertDialog(
@@ -25,9 +25,6 @@ class TelaUsuarios:
         def hover_btn(e):
             e.control.bgcolor="#1C1C1C" if e.data=="true"else None
             e.control.update()
-
-        ###############################################################################
-        ###############################################################################
 
         ###############################################################################
         ###############################################################################
@@ -189,7 +186,7 @@ class TelaUsuarios:
         ###############################################################################
         ###############################################################################
 
-        tela = ft.Container(
+        tela=ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
             content=ft.Row(
@@ -198,10 +195,7 @@ class TelaUsuarios:
                     ft.Column(
                         [
                             appbar,
-                            txt_tela
-                            #ft.Container(padding=10, content=txt_tela_titulo),
-                            #ft.Container(padding=10, content=txt_tela_subtitulo),
-                            # Espaço para o conteúdo principal
+                            txt_tela,
                         ],
                         expand=True
                     )

@@ -9,10 +9,10 @@ class TelaLogin:
     def login(self):
 
         # URL da API de autenticação
-        API_URL = "https://api-pim.onrender.com"
+        API_URL="https://api-pim.onrender.com"
 
         # Chave secreta da API para decodificar o token (substitua pela chave correta da API)
-        SECRET_KEY = "0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
+        SECRET_KEY="0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
 
         #mensagem de aviso que aparece caso ocorra algum erro na autenticação de usuário
         def snack_erro_login(e):

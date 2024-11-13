@@ -1,89 +1,43 @@
 import flet as ft
 import requests
-import jwt
+
+API_URL="https://api-pim.onrender.com"
+SECRET_KEY="0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
 
 class TelaLogin:
-    
     def __init__(self,page,checar_estado):
         self.page=page
         self.checar_estado=checar_estado
 
     def login(self):
 
-        # URL da API de autenticação
-        API_URL="https://api-pim.onrender.com"
-
-        # Chave secreta da API para decodificar o token (substitua pela chave correta da API)
-        SECRET_KEY="0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
-
-        #mensagem de aviso que aparece caso ocorra algum erro na autenticação de usuário
-        def snack_erro_login(e):
-            self.page.snack_bar=ft.SnackBar(
-                ft.Text(
-                    "Verifique suas informações de login e tente novamente!",
-                    text_align=ft.TextAlign.CENTER
-                ),
-                bgcolor="#DA4E49"
-            )
-            self.page.snack_bar.open=True
-            self.page.update()
-
-        #erro de comunicação com a API
-        def snack_erro_API(e):
-            self.page.snack_bar=ft.SnackBar(
-                ft.Text(
-                    "Não foi possível se conectar com o servidor!",
-                    text_align=ft.TextAlign.CENTER
-                ),
-                bgcolor="#DA4E49"
-            )
-            self.page.snack_bar.open=True
-            self.page.update()
-
         def autenticar_usuario(e):
-            username=input_email.value
-            password=input_senha.value
-
             dados_login={
-                "email":username,
-                "senha":password
+                "email":input_email.value,
+                "senha":input_senha.value
             }
 
-            # Fazer a requisição à API
             try:
                 response=requests.post(f"{API_URL}/auth/login",json=dados_login)
                 response_data=response.json()
-
-                # Verifica se o status da resposta é 200 e se o token foi recebido
+                
                 if response.status_code==200 and "token" in response_data:
                     token=response_data["token"]
-                    self.checar_estado=token #utiliza um token para navegar. Esse token é declarado em rotas.py
+                    self.checar_estado.token=token
+
                     self.page.go("/home")
-                    
-                    # Decodificar o token JWT
-                    try:
-                        decoded_data=jwt.decode(token, SECRET_KEY,algorithms=["HS256"])
-                        output_text.value=f"Token decodificado: {decoded_data}"
-                    except jwt.ExpiredSignatureError:
-                        output_text.value="Erro: o token expirou."
-                    except jwt.InvalidTokenError:
-                        output_text.value="Erro: token inválido."
+
                 else:
-                    snack_erro_login(e)
-            
+                    print("email ou senha incorretos")
+
             except requests.exceptions.RequestException as ex:
-                #caso não seja possível abrir a API, esse erro será exibido
-                snack_erro_API(e)
+                print("verifique sua internet")
 
-            # Atualizar o output na interface
             self.page.update()
-
-        #####################################################################################
-        #####################################################################################
 
         logo=ft.Container(
             alignment=ft.alignment.top_center,
-            content=ft.Image("app/assets\logo2.png"),
+            content=ft.Image(src="app/assets/logo2.png"),
             width=250,
             height=250,
             padding=ft.Padding(left=20,right=20,bottom=20,top=0)
@@ -96,9 +50,8 @@ class TelaLogin:
             alignment=ft.alignment.center_right,
             padding=ft.Padding(left=20,right=0,bottom=20,top=0),
             content=ft.TextButton("LOGIN",on_click=autenticar_usuario,style=ft.ButtonStyle(bgcolor="#1C1C1C")),
-            #content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
+            ##content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
         )
-        output_text = ft.Text()
 
         #bloco de login e senha com imagem e fundo
         elemento_login=ft.Container(
@@ -112,7 +65,7 @@ class TelaLogin:
                     logo,
                     input_email,
                     input_senha,
-                    btn_login
+                    btn_login, 
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,  # Centraliza os itens dentro da coluna
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,  # Centraliza na horizontal
@@ -131,7 +84,7 @@ class TelaLogin:
                     ft.Container(
                         content=elemento_login,
                         alignment=ft.alignment.center #joga os elementos pro centro da tela, sem expandir nada
-                    )
+                    ),
                 ]
             )
         )

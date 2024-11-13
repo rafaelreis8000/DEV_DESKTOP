@@ -4,33 +4,16 @@ from ..componentes.appbar import Appbar
 from ..componentes.sidebar import Sidebar
 
 class TelaHome:
-    
-    def __init__(self,page,checar_estado):
+
+    def __init__(self,page, app_state):
         self.page=page
-        self.checar_estado=checar_estado
-        
+        self.app_state=app_state
+
     def home(self):
-        appbar=Appbar(self.page).Componente_Appbar()
-        sidebar=Sidebar(self.page).Componente_sidebar("home")
+        appbar = Appbar(self.page).appBar()
+        sidebar = Sidebar(self.page).sideBar("home")
 
-        txt_tela=ft.Container(
-            padding=10,
-            margin=10,
-            content=ft.Column(
-                [
-                    ft.Text("Bem-vindo ao Sistema de Gerenciamento da Fazenda Urbana",color=ft.colors.BLACK,size=20),
-                    ft.Text(
-                        "Aqui você pode visualizar um resumo das operações.\nNavegue pelas opções do menu para gerenciar as culturas, plantios, colheitas e mais",
-                        color=ft.colors.BLACK
-                    )
-                ]
-            )
-        )
-
-        ###############################################################################
-        ###############################################################################
-
-        tela=ft.Container(
+        tela = ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
             content=ft.Row(
@@ -39,12 +22,11 @@ class TelaHome:
                     ft.Column(
                         [
                             appbar,
-                            txt_tela
                         ],
-                        expand=True #Estica a appbar por todo o topo da tela
+                        expand=True
                     )
                 ],
-                spacing=0  #Remove espaçamento entre sidebar e coluna
+                spacing=0
             )
         )
 

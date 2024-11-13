@@ -1,18 +1,19 @@
 import flet as ft
 
 from app.telas.login import TelaLogin
-from app.telas.home import TelaHome 
+from app.telas.home import TelaHome
 from app.telas.usuarios import TelaUsuarios
 
-class ChecarEstado: #essa classe checa o estado do sistema para utilização do token na navegação
+class ChecarEstado: # essa classe checa o estado do sistema para utilização do token de navegação
     def __init__(self):
         self.token=None
 
 def registro_rotas(page:ft.Page):
-    checar_estado=ChecarEstado
+    checar_estado=ChecarEstado()
+
     def mudar_rotas(route):
 
-        page.views.clear() #limpa a tela
+        page.views.clear() # limpa a tela
 
         #checagem de rotas
         if page.route=="/":

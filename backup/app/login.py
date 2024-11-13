@@ -9,10 +9,10 @@ class TelaLogin:
     def login(self):
 
         # URL da API de autenticação
-        API_URL = "https://api-pim.onrender.com"
+        API_URL="https://api-pim.onrender.com"
 
         # Chave secreta da API para decodificar o token (substitua pela chave correta da API)
-        SECRET_KEY = "0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
+        SECRET_KEY="0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
 
         #mensagem de aviso que aparece caso ocorra algum erro na autenticação de usuário
         def snack_erro_login(e):
@@ -49,22 +49,22 @@ class TelaLogin:
 
             # Fazer a requisição à API
             try:
-                response = requests.post(f"{API_URL}/auth/login", json=dados_login)
-                response_data = response.json()
+                response=requests.post(f"{API_URL}/auth/login", json=dados_login)
+                response_data=response.json()
 
                 # Verifica se o status da resposta é 200 e se o token foi recebido
-                if response.status_code == 200 and "token" in response_data:
-                    token = response_data["token"]
+                if response.status_code==200 and "token" in response_data:
+                    token=response_data["token"]
                     self.page.go("/home")
                     
                     # Decodificar o token JWT
                     try:
-                        decoded_data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-                        output_text.value = f"Token decodificado: {decoded_data}"
+                        decoded_data=jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+                        output_text.value=f"Token decodificado: {decoded_data}"
                     except jwt.ExpiredSignatureError:
-                        output_text.value = "Erro: o token expirou."
+                        output_text.value="Erro: o token expirou."
                     except jwt.InvalidTokenError:
-                        output_text.value = "Erro: token inválido."
+                        output_text.value="Erro: token inválido."
                 else:
                     snack_erro_login(e)
             
@@ -88,6 +88,7 @@ class TelaLogin:
 
         input_email=ft.TextField(label="Insira seu E-mail: ",color=ft.colors.BLACK,label_style=ft.TextStyle(color=ft.colors.BLACK))
         input_senha=ft.TextField(label="Insira sua senha: ",color=ft.colors.BLACK,label_style=ft.TextStyle(color=ft.colors.BLACK),password=True,can_reveal_password=True)
+
         btn_login=ft.Container(
             alignment=ft.alignment.center_right,
             padding=ft.Padding(left=20,right=20,bottom=20,top=0),

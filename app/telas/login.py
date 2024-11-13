@@ -11,6 +11,28 @@ class TelaLogin:
 
     def login(self):
 
+        def snack_erro_login(e):
+            self.page.snack_bar=ft.SnackBar(
+                ft.Text(
+                    "Verifique suas informações de login e tente novamente!",
+                    text_align=ft.TextAlign.CENTER
+                ),
+                bgcolor="#DA4E49"
+            )
+            self.page.snack_bar.open=True
+            self.page.update()
+        
+        def snack_erro_API(e):
+            self.page.snack_bar=ft.SnackBar(
+                ft.Text(
+                    "Não foi possível se conectar com o servidor!",
+                    text_align=ft.TextAlign.CENTER
+                ),
+                bgcolor="#DA4E49"
+            )
+            self.page.snack_bar.open=True
+            self.page.update()
+
         def autenticar_usuario(e):
             dados_login={
                 "email":input_email.value,
@@ -29,9 +51,11 @@ class TelaLogin:
 
                 else:
                     print("email ou senha incorretos")
+                    snack_erro_login(e)
 
             except requests.exceptions.RequestException as ex:
                 print("verifique sua internet")
+                snack_erro_API(e)
 
             self.page.update()
 

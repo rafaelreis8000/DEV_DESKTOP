@@ -3,8 +3,9 @@ import requests
 import jwt
 
 class TelaLogin:
-    def __init__(self,page):
+    def __init__(self,page,checar_estado):
         self.page=page
+        self.checar_estado=checar_estado
 
     def login(self):
 
@@ -55,6 +56,7 @@ class TelaLogin:
                 # Verifica se o status da resposta é 200 e se o token foi recebido
                 if response.status_code==200 and "token" in response_data:
                     token=response_data["token"]
+                    self.checar_estado=token #utiliza um token para navegar. Esse token é declarado em rotas.py
                     self.page.go("/home")
                     
                     # Decodificar o token JWT
@@ -91,9 +93,9 @@ class TelaLogin:
 
         btn_login=ft.Container(
             alignment=ft.alignment.center_right,
-            padding=ft.Padding(left=20,right=20,bottom=20,top=0),
-            #content=ft.TextButton("LOGIN",on_click=autenticar_usuario),
-            content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
+            padding=ft.Padding(left=20,right=0,bottom=20,top=0),
+            content=ft.TextButton("LOGIN",on_click=autenticar_usuario,style=ft.ButtonStyle(bgcolor="#1C1C1C")),
+            #content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
         )
         output_text = ft.Text()
 

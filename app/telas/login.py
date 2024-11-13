@@ -3,6 +3,7 @@ import requests
 import jwt
 
 class TelaLogin:
+    
     def __init__(self,page,checar_estado):
         self.page=page
         self.checar_estado=checar_estado
@@ -50,7 +51,7 @@ class TelaLogin:
 
             # Fazer a requisição à API
             try:
-                response=requests.post(f"{API_URL}/auth/login", json=dados_login)
+                response=requests.post(f"{API_URL}/auth/login",json=dados_login)
                 response_data=response.json()
 
                 # Verifica se o status da resposta é 200 e se o token foi recebido
@@ -61,7 +62,7 @@ class TelaLogin:
                     
                     # Decodificar o token JWT
                     try:
-                        decoded_data=jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+                        decoded_data=jwt.decode(token, SECRET_KEY,algorithms=["HS256"])
                         output_text.value=f"Token decodificado: {decoded_data}"
                     except jwt.ExpiredSignatureError:
                         output_text.value="Erro: o token expirou."

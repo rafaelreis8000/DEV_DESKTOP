@@ -4,6 +4,7 @@ from ..componentes.appbar import Appbar
 from ..componentes.sidebar import Sidebar
 
 class TelaHome:
+    
     def __init__(self,page,checar_estado):
         self.page=page
         self.checar_estado=checar_estado
@@ -39,9 +40,11 @@ class TelaHome:
                         [
                             appbar,
                             txt_tela
-                        ]
+                        ],
+                        expand=True #Estica a appbar por todo o topo da tela
                     )
-                ]
+                ],
+                spacing=0  #Remove espaçamento entre sidebar e coluna
             )
         )
 

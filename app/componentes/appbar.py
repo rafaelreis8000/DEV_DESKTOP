@@ -26,7 +26,6 @@ class Appbar:
 
         appbar=ft.Container(
             height=75,
-            width=self.page.width * 1,
             bgcolor="#1D3331",
             content=ft.Row(
                 [
@@ -34,8 +33,7 @@ class Appbar:
                     icone_sair
                 ],
                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN
-            ),
-            padding=0
+            )
         )
 
         return appbar

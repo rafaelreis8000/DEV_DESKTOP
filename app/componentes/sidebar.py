@@ -123,19 +123,19 @@ class Sidebar:
         )
 
         if current=="home":
-            btn_home.bgcolor="#111111"
+            btn_home.bgcolor="#1C1C1C"
             btn_home.on_hover=None
 
         elif current=="usuarios":
-            btn_usuarios.bgcolor="#111111"
+            btn_usuarios.bgcolor="#1C1C1C"
             btn_usuarios.on_hover=None
         
         elif current=="culturas":
-            btn_culturas.bgcolor="#111111"
+            btn_culturas.bgcolor="#1C1C1C"
             btn_culturas.on_hover=None
 
         elif current=="plantios":
-            btn_plantios.bgcolor="#111111"
+            btn_plantios.bgcolor="#1C1C1C"
             btn_plantios.on_hover=None
         
         elif current=="colheitas":
@@ -174,9 +174,7 @@ class Sidebar:
                     btn_pedidos,
                     btn_relatorios
                 ]
-            ),
-            padding=0,
-            margin=ft.margin.only(left=0,top=75,right=0,bottom=0)
+            )
         )
 
         return sidebar

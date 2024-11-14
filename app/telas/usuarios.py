@@ -4,16 +4,16 @@ import requests
 from ..componentes.appbar import Appbar
 from ..componentes.sidebar import Sidebar
 
-API_URL = "https://api-pim.onrender.com"
-SECRET_KEY = "0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
+API_URL="https://api-pim.onrender.com"
+SECRET_KEY="0d8689404a2c83325a0353496caafcdfa01abd76f4511037bad2a66ed3dd6050"
 
 class UsuariosAPI(ft.Column):
-    def __init__(self, app_state):
-        self.app_state=app_state
+    def __init__(self, checar_estado):
+        self.checar_estado=checar_estado
         super().__init__()
 
 
-        self.users_column = ft.Column(
+        self.users_column=ft.Column(
             expand=True,
         )
 
@@ -25,9 +25,9 @@ class UsuariosAPI(ft.Column):
         self.create_users()
 
     def lista_users(self):
-        print(self.app_state.token)
+        print(self.checar_estado.token)
         params = {
-            "Authorization": f"Bearer {self.app_state.token}"
+            "Authorization": f"Bearer {self.checar_estado.token}"
         }
 
         res = requests.get(f"{API_URL}/users", headers=params)

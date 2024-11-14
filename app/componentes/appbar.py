@@ -7,6 +7,7 @@ class Appbar:
 
     def appBar(self):
 
+        # pop-up de alerta com confirmação do usuário
         alerta_logout=ft.AlertDialog(
             modal=True,
             bgcolor="#2A383E",
@@ -29,7 +30,7 @@ class Appbar:
             bgcolor="#1D3331",
             content=ft.Row(
                 [
-                    ft.Container(),
+                    ft.Container(), # container vazio, utilizado para espaçar o ícone para o canto direito
                     icone_sair
                 ],
                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN

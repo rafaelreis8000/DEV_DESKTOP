@@ -73,8 +73,8 @@ class TelaLogin:
         btn_login=ft.Container(
             alignment=ft.alignment.center_right,
             padding=ft.Padding(left=20,right=0,bottom=20,top=0),
-            content=ft.TextButton("LOGIN",on_click=autenticar_usuario,style=ft.ButtonStyle(bgcolor="#1C1C1C")),
-            ##content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
+            #content=ft.TextButton("LOGIN",on_click=autenticar_usuario,style=ft.ButtonStyle(bgcolor="#1C1C1C")),
+            content=ft.TextButton("LOGIN",on_click=lambda e:self.page.go("/home"),style=ft.ButtonStyle(bgcolor="#1C1C1C"))
         )
 
         #bloco de login e senha com imagem e fundo

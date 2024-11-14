@@ -13,6 +13,20 @@ class TelaHome:
         appbar = Appbar(self.page).appBar()
         sidebar = Sidebar(self.page).sideBar("home")
 
+        txt_tela=ft.Container(
+            padding=10,
+            margin=10,
+            content=ft.Column(
+                [
+                    ft.Text("Bem-vindo ao Sistema de Gerenciamento da Fazenda Urbana",color=ft.colors.BLACK,size=20),
+                    ft.Text(
+                        "Aqui você pode visualizar um resumo das operações.\nNavegue pelas opções do menu para gerenciar as culturas, plantios, colheitas e mais",
+                        color=ft.colors.BLACK
+                    )
+                ]
+            )
+        )
+
         tela = ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
@@ -22,6 +36,7 @@ class TelaHome:
                     ft.Column(
                         [
                             appbar,
+                            txt_tela
                         ],
                         expand=True
                     )

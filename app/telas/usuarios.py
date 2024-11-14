@@ -51,6 +51,9 @@ class UsuariosAPI(ft.Column):
 
         self.users_column.controls.append(btn_create)
 
+        ###############################################################################
+        ###############################################################################
+
 class TelaUsuarios:
 
     def __init__(self,page, app_state):
@@ -62,6 +65,23 @@ class TelaUsuarios:
         sidebar = Sidebar(self.page).sideBar("usuarios")
         users = UsuariosAPI(self.app_state)
 
+        txt_tela=ft.Container(
+            padding=10,
+            margin=10,
+            content=ft.Column(
+                [
+                    ft.Text("Gerenciamento de Usuários",color=ft.colors.BLACK,size=20),
+                    ft.Text(
+                        "Aqui você pode visualizar e criar usuários.",
+                        color=ft.colors.BLACK
+                    )
+                ]
+            )
+        )
+
+        ###############################################################################
+        ###############################################################################
+
         tela = ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
@@ -71,6 +91,7 @@ class TelaUsuarios:
                     ft.Column(
                         [
                             appbar,
+                            txt_tela,
                             users
                         ],
                         expand=True

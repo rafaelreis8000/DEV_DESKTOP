@@ -13,29 +13,29 @@ class UsuariosAPI(ft.Column):
         super().__init__()
 
 
-        self.users_column=ft.Column(
+        # aqui uma coluna é criada
+        self.componente_lista=ft.Column(
             expand=True,
         )
 
         self.controls = [
-            self.users_column
+            self.componente_lista
         ]
 
-        self.lista_users()
-        self.create_users()
+        self.lista_usuarios()
+        self.criar_usuario()
 
-    def lista_users(self):
+    # define o que a lista realmente vai fazer
+    def lista_usuarios(self):
         print(self.checar_estado.token)
-        params = {
-            "Authorization": f"Bearer {self.checar_estado.token}"
-        }
+        parametros={"Authorization":f"Bearer{self.checar_estado.token}"}
 
-        res = requests.get(f"{API_URL}/users", headers=params)
+        resultado=requests.get(f"{API_URL}/users",headers=parametros)
 
-        usuarios = res.json()
+        usuarios=resultado.json()
 
         for user in usuarios:
-            item_container=ft.Container(
+            container_elemento_lista=ft.Container(
                 ft.Text(
                     user,
                     color="#000000"
@@ -44,12 +44,12 @@ class UsuariosAPI(ft.Column):
                     border=ft.border.all(2),
                 )
 
-            self.users_column.controls.append(item_container)
+            self.componente_lista.controls.append(container_elemento_lista)
 
-    def create_users(self):
-        btn_create=ft.ElevatedButton("Criar",)
+    def criar_usuario(self):
+        btn_create=ft.ElevatedButton("Criar",style=ft.ButtonStyle(bgcolor="#1C1C1C"))
 
-        self.users_column.controls.append(btn_create)
+        self.componente_lista.controls.append(btn_create)
 
         ###############################################################################
         ###############################################################################

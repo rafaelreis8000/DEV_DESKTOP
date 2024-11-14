@@ -11,10 +11,10 @@ class TelaLogin:
 
     def login(self):
 
-        def snack_erro_login(e):
+        def snack_erro_login(e,mensagem):
             self.page.snack_bar=ft.SnackBar(
                 ft.Text(
-                    "Verifique suas informações de login e tente novamente!",
+                    mensagem,
                     text_align=ft.TextAlign.CENTER
                 ),
                 bgcolor="#DA4E49"
@@ -50,11 +50,9 @@ class TelaLogin:
                     self.page.go("/home")
 
                 else:
-                    print("email ou senha incorretos")
-                    snack_erro_login(e)
+                    snack_erro_login(e,response_data)
 
             except requests.exceptions.RequestException as ex:
-                print("verifique sua internet")
                 snack_erro_API(e)
 
             self.page.update()

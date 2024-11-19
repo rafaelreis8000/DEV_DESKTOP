@@ -35,7 +35,7 @@ class Appbar:
                 ],
                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN
             ),
-            padding=0
+            padding=0,
         )
 
         return appbar

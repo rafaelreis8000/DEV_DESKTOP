@@ -5,9 +5,9 @@ from ..componentes.sidebar import Sidebar
 
 class TelaHome:
 
-    def __init__(self,page, app_state):
+    def __init__(self,page,checar_estado):
         self.page=page
-        self.app_state=app_state
+        self.app_state=checar_estado
 
     def home(self):
         appbar = Appbar(self.page).appBar()

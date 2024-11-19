@@ -134,7 +134,7 @@ class Sidebar:
 
             e.control.update()
 
-        def navigation(path):
+        def navegar(path):
             self.page.go(path)
             self.page.update()
 
@@ -157,7 +157,7 @@ class Sidebar:
             padding=10,
             margin=ft.margin.only(left=5,top=0,right=5,bottom=0),
             on_hover=hover_btn,
-            on_click=lambda e:navigation("/home"),
+            on_click=lambda e:navegar("/home"),
             content=ft.Row(
                 [
                     ft.Image("app/assets/icone_home.svg",width=30,height=30)
@@ -169,7 +169,7 @@ class Sidebar:
             padding=10,
             margin=ft.margin.only(left=4,top=0,right=4,bottom=0),
             on_hover=hover_btn,
-            on_click=lambda e:navigation("/usuarios"),
+            on_click=lambda e:navegar("/usuarios"),
             content=ft.Row(
                 [
                     ft.Image("app/assets/icone_perfil_2.svg",width=30,height=30)

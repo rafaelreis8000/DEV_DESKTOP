@@ -23,12 +23,11 @@ class UsuariosAPI(ft.Column):
         ]
 
         self.lista_usuarios()
-        self.criar_usuario()
 
     # define o que a lista realmente vai fazer
     def lista_usuarios(self):
         print(self.checar_estado.token)
-        parametros={"Authorization":f"Bearer{self.checar_estado.token}"}
+        parametros={"Authorization":f"Bearer {self.checar_estado.token}"}
 
         resultado=requests.get(f"{API_URL}/users",headers=parametros)
 
@@ -36,34 +35,37 @@ class UsuariosAPI(ft.Column):
 
         for user in usuarios:
             container_elemento_lista=ft.Container(
-                ft.Text(
-                    user,
-                    color="#000000"
-                    ),
-                    padding=50,
-                    border=ft.border.all(2),
-                )
+                content=ft.Row(
+                    controls=[
+                        ft.Image("app/assets\icone_perfil.svg",width=50,height=50),
+                        ft.Text(f"Nome: {user["nome"]}",size=15),
+                        ft.Text(f"E-mail: {user["email"]}",size=15),
+                        ft.Text(f"Cargo: {user["tipo_usuario"]}",size=15)
+                    ],
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN
+                ),
+                width=700,
+                padding=20,
+                bgcolor="#2A383E",
+                border=ft.border.all(6,ft.colors.BLUE_GREY),
+                border_radius=ft.border_radius.all(10),
+            )
 
             self.componente_lista.controls.append(container_elemento_lista)
-
-    def criar_usuario(self):
-        btn_create=ft.ElevatedButton("Criar",style=ft.ButtonStyle(bgcolor="#1C1C1C"))
-
-        self.componente_lista.controls.append(btn_create)
 
         ###############################################################################
         ###############################################################################
 
 class TelaUsuarios:
 
-    def __init__(self,page, app_state):
+    def __init__(self,page,checar_estado):
         self.page=page
-        self.app_state=app_state
+        self.checar_estado=checar_estado
 
     def usuarios(self):
-        appbar = Appbar(self.page).appBar()
-        sidebar = Sidebar(self.page).sideBar("usuarios")
-        users = UsuariosAPI(self.app_state)
+        appbar=Appbar(self.page).appBar()
+        sidebar=Sidebar(self.page).sideBar("usuarios")
+        users=UsuariosAPI(self.checar_estado)
 
         txt_tela=ft.Container(
             padding=10,
@@ -82,7 +84,7 @@ class TelaUsuarios:
         ###############################################################################
         ###############################################################################
 
-        tela = ft.Container(
+        tela=ft.Container(
             expand=True,
             bgcolor="#D9D9D9",
             content=ft.Row(
@@ -92,12 +94,20 @@ class TelaUsuarios:
                         [
                             appbar,
                             txt_tela,
-                            users
+                            ft.Column(
+                                [
+                                    ft.Container(users,alignment=ft.alignment.center)
+                                ],
+                                expand=True,
+                                scroll="auto" # habilita o scroll somente para a lista
+                            ),
+                           # ft.Container(users,alignment=ft.alignment.center) # lista de usuários alinhada no centro da tela
                         ],
-                        expand=True
+                        expand=True,
+
                     )
                 ],
-                spacing=0
+                spacing=0,
             )
         )
 

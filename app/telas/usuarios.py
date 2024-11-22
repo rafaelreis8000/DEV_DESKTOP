@@ -46,6 +46,7 @@ class UsuariosAPI(ft.Column):
                 ),
                 width=700,
                 padding=20,
+                margin=10,
                 bgcolor="#2A383E",
                 border=ft.border.all(6,ft.colors.BLUE_GREY),
                 border_radius=ft.border_radius.all(10),

@@ -5,7 +5,7 @@ from ..componentes.sidebar import Sidebar
 from ..componentes.tabela import Tabela
 from ..componentes.botao_cadastra import BotaoFuncionalidade
 
-class TelCulturas:
+class TelaCultura:
 
     def __init__(self,page,checar_estado):
         self.page=page
@@ -22,6 +22,8 @@ class TelCulturas:
         ###############################################################################
 
         btn_container=ft.Container(
+            padding=10,
+            margin=10,
             content=ft.Row(
                 [
                     botoesFuncionalidade,
@@ -29,8 +31,20 @@ class TelCulturas:
                 alignment=ft.MainAxisAlignment.START,
                 expand=True,
             ),
-            padding=0,
-            margin=ft.margin.only(left=140, bottom=100)
+        )
+
+        txt_tela=ft.Container(
+            padding=10,
+            margin=10,
+            content=ft.Column(
+                [
+                    ft.Text("Gerenciamento de Culturas",color=ft.colors.BLACK,size=20),
+                    ft.Text(
+                        "Aqui você pode visualizar e criar culturas.",
+                        color=ft.colors.BLACK
+                    )
+                ]
+            )
         )
 
         tela=ft.Container(
@@ -42,10 +56,16 @@ class TelCulturas:
                     ft.Column(
                         [
                             appbar,
+                            ft.Row(
+                                [
+                                    txt_tela,
+                                    btn_container
+                                ],
+                                alignment=ft.MainAxisAlignment.SPACE_BETWEEN
+                            ),
                             ft.Column(
                                 [
                                     tabela,
-                                    btn_container
                                 ],
                                 expand=True,
                                 alignment=ft.MainAxisAlignment.CENTER,

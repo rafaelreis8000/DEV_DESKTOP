@@ -4,10 +4,10 @@ from app.telas.login import TelaLogin
 from app.telas.home import TelaHome
 from app.telas.usuarios import TelaUsuarios 
 from app.telas.fornecedores import TelaFornecedores
-from app.telas.culturas import TelCulturas
+from app.telas.cultura import TelaCultura
 from app.telas.insumos import TelaInsumos
 from app.telas.plantios import TelaPlantios
-from app.telas.colheitas import TelaColheitas
+from app.telas.colheita import TelaColheitas
 from app.telas.pedido_venda import TelaPedidos
 
 class ChecarEstado: # essa classe checa o estado do sistema para utilização do token de navegação
@@ -40,7 +40,7 @@ def registro_rotas(page:ft.Page):
             page.views.append(ft.View(route="/fornecedores",controls=[obj_fornecedores.fornecedores()]))
 
         elif page.route=="/culturas":
-            obj_cultura=TelCulturas(page,checar_estado)
+            obj_cultura=TelaCultura(page,checar_estado)
             page.views.append(ft.View(route="/culturas",controls=[obj_cultura.culturas()]))
 
         elif page.route=="/insumos":

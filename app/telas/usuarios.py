@@ -28,8 +28,6 @@ class TelaUsuarios:
 
         appbar=Appbar(self.page).appBar()
         sidebar=Sidebar(self.page).sideBar("usuarios")
-
-        #tabela que será exibida na tela
         tabela=Tabela(self.page, self.checar_estado).tabela(["ID", "Nome", "Email", "Cargo"], ["usuario_id", "nome", "email", "tipo_usuario"], "users", "user", "usuarios", ["nome", "email", "senha", "role"])
         tabela_arquivados=Tabela(self.page, self.checar_estado).tabela_arquivado(["ID", "Nome", "Email", "Cargo"], ["usuario_id", "nome", "email", "tipo_usuario"], "users", "user", "usuarios", ["nome", "email", "senha", "role"])
         botoesFuncionalidade=BotaoFuncionalidade(self.page, self.checar_estado).botao_funcionalidade("user", "usuarios", ["nome", "email", "senha", "role"])
@@ -39,6 +37,8 @@ class TelaUsuarios:
         ###############################################################################
 
         btn_container=ft.Container(
+            padding=10,
+            margin=10,
             content=ft.Row(
                 [
                     botoesFuncionalidade,
@@ -47,8 +47,22 @@ class TelaUsuarios:
                 alignment=ft.MainAxisAlignment.START,
                 expand=True,
             ),
-            padding=0,
-            margin=ft.margin.only(left=140, bottom=100)
+            #padding=0,
+            #margin=ft.margin.only(left=140, bottom=100)
+        )
+
+        txt_tela=ft.Container(
+            padding=10,
+            margin=10,
+            content=ft.Column(
+                [
+                    ft.Text("Gerenciamento de Usuários",color=ft.colors.BLACK,size=20),
+                    ft.Text(
+                        "Aqui você pode visualizar e criar usuários.",
+                        color=ft.colors.BLACK
+                    )
+                ]
+            )
         )
 
         tela=ft.Container(
@@ -60,15 +74,22 @@ class TelaUsuarios:
                     ft.Column(
                         [
                             appbar,
+                            ft.Row(
+                                [
+                                    txt_tela,
+                                    btn_container
+                                ],
+                                alignment=ft.MainAxisAlignment.SPACE_BETWEEN
+                            ),
+
                             ft.Column(
                                 [
                                     tabela,
                                     tabela_arquivados,
-                                    btn_container
                                 ],
                                 expand=True,
                                 alignment=ft.MainAxisAlignment.CENTER,
-                                scroll='auto' # habilita o scroll somente para os elementos de dentro da Column
+                                scroll='auto'
                             ),
                            # ft.Container(users,alignment=ft.alignment.center) # lista de usuários alinhada no centro da tela
                         ],

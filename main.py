@@ -10,9 +10,9 @@ def main(page:ft.Page):
     page.window.height=720
     page.window_min_width=1280
     page.window_min_height=720
-    page.vertical_alignment = "center"
-    page.horizontal_alignment = "center"
-    page.scroll = "adaptive"
+    page.vertical_alignment="center"
+    page.horizontal_alignment="center"
+    page.scroll="adaptive"
 
     page.go("/") # manda ir pra tela de login
     page.update # atualiza a tela
